@@ -1,18 +1,18 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"os"
-	"bufio"
 )
 
 func inside(row int, col int, height int, width int) bool {
-	return 0 <= row && row < height && 0 <= col && col < width 
+	return 0 <= row && row < height && 0 <= col && col < width
 }
 
 func main() {
 	// Open the file
-	file, err := os.Open("./input.txt")
+	file, err := os.Open("./sample.txt")
 	if err != nil {
 		fmt.Println("Error opening file: ", err)
 		return
@@ -40,9 +40,9 @@ func main() {
 							continue
 						}
 						all_ok := true
-						for i:= 0; i < 4; i++ {    // row = 0, col = 5
-							r2 := row + drow * i   // row = 0 ; drow = 0; i = 1 => r2 = 0 
-							c2 := col + dcol * i   // col = 5; dcol = 1; i = 1 => c2 = 4
+						for i := 0; i < 4; i++ { // row = 0, col = 4
+							r2 := row + drow*i // row = 0 ; drow = -1; i = 1 => r2 = -1
+							c2 := col + dcol*i // col = 4; dcol = -1; i = 1 => c2 = 3   => s[-1][3]
 							if inside(r2, c2, height, width) && string(s[r2][c2]) == string(string_look_for[i]) {
 							} else {
 								all_ok = false
@@ -55,7 +55,7 @@ func main() {
 
 					}
 				}
-			} 
+			}
 		}
 	}
 	fmt.Println(answer)
