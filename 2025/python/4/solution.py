@@ -16,7 +16,6 @@ def solution_part_2(input):
         total = 0
         count = 0
         more = True
-        iteration = 0
         track = []
         while more:
             count = 0
@@ -27,7 +26,6 @@ def solution_part_2(input):
                         if adjacent_count < 4:
                             track.append([i, j])
                             count += 1
-            iteration += 1
             total += count
             if count == 0:
                 more = False
