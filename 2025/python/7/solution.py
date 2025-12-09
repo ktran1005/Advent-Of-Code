@@ -46,11 +46,11 @@ def solution_part_2(input):
                 else:
                     next.append((x + 1, y, c))
             
-            p = Counter()
+            p = {}
             for (x, y, c) in next:
-                p[(x, y)] += c 
+                p[(x, y)] = p.get((x, y), 0) + c
 
-
+            current = []
             for x, y in p.keys():
                 current.append((x, y, p[(x, y)]))
         print(count)
@@ -58,5 +58,5 @@ def solution_part_2(input):
 
 
 if __name__ == "__main__":
-    # solution_part_1('input.txt')
+    solution_part_1('input.txt')
     solution_part_2("input.txt")
